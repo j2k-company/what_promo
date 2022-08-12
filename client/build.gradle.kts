@@ -1,0 +1,48 @@
+
+var outPath = "$projectDir/../server/src/main/resources/web/"
+
+plugins {
+    id("org.jetbrains.kotlin.js") version "1.6.10"
+}
+
+group = "com.j2k"
+version = "1.0-SNAPSHOT"
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(kotlin("stdlib-js"))
+}
+
+kotlin {
+    js {
+        browser {
+            webpackTask {
+                this.destinationDirectory = File(outPath)
+                cssSupport.enabled = true
+
+                dependsOn(tasks.named("copyIndexHTML").get())
+            }
+
+            runTask {
+                cssSupport.enabled = true
+            }
+
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                    webpackConfig.cssSupport.enabled = true
+                }
+            }
+        }
+        binaries.executable()
+    }
+}
+
+tasks.register<Copy>("copyIndexHTML") {
+    from(file("src/main/resources/index.html"))
+    into(outPath)
+}
