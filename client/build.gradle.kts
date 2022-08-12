@@ -5,9 +5,6 @@ plugins {
     id("org.jetbrains.kotlin.js") version "1.6.10"
 }
 
-group = "com.j2k"
-version = "1.0-SNAPSHOT"
-
 
 repositories {
     mavenCentral()
