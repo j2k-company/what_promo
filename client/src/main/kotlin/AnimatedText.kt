@@ -29,7 +29,7 @@ class AnimatedText(
         val div = document.createElement("div") as HTMLDivElement
         div.style.apply {
             top = this@AnimatedText.position.y.toString() + "dp"
-            top = this@AnimatedText.position.x.toString() + "dp"
+            left = this@AnimatedText.position.x.toString() + "dp"
             this.position = "absolute"
 
             zIndex = "100"
