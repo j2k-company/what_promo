@@ -8,6 +8,16 @@ import objects.RGB
 
 val blackHole = Object(mass = Mass(Mass.MAX_VAlUE), radius = 50.0, color = RGB(20U, 20U, 20U))
 var lastTime = 0
+val animatedText = AnimatedText(
+    text = "someInnerTExt",
+    interval = 6.fps,
+    color = RGB(0u, 170u, 0u)
+)
+val cursor = AnimatedText(
+    text = " ",
+    interval = 3.fps,
+    backgroundColor = RGB(50u, 50u, 50u)
+)
 
 fun main() {
     CanvasState {
@@ -15,10 +25,7 @@ fun main() {
             clear()
             blackHole.position = Point(width / 2.0, height / 2.0)
             addDrawable(blackHole)
-
-            AnimatedText("someInnerTExt", RGB(0u, 170u, 0u), 6.fps) {
-                nextChar()
-            }.startAnimation()
+            animatedText.startAnimation()
         }
 
         if (time != lastTime) {
