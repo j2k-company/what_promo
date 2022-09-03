@@ -15,7 +15,7 @@ fun main() {
             blackHole.position = Point(width / 2.0, height / 2.0)
             addDrawable(blackHole)
 
-            Text("div", "someInnerTExt", RGB(0u, 170u, 0u))
+            Text("someInnerTExt", RGB(0u, 170u, 0u))
         }
 
         if (time != lastTime) {
