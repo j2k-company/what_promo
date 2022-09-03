@@ -75,15 +75,6 @@ class CanvasState(
     }
 }
 
-fun canvasState(
-    interval: Int = 30.fps,
-    canvas: HTMLCanvasElement = CanvasState.initalizeCanvas(),
-    backgroundColor: RGB = RGB(148U, 148U, 148U),
-    entry: (CanvasState.() -> Unit)? = null
-) {
-    CanvasState(interval, canvas, backgroundColor, entry)
-}
-
 interface Drawable {
     fun draw(context: CanvasRenderingContext2D)
     fun update(canvasState: CanvasState)

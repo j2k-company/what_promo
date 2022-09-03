@@ -18,7 +18,7 @@ fun main() {
 
             AnimatedText("someInnerTExt", RGB(0u, 170u, 0u), 6.fps) {
                 nextChar()
-            }
+            }.startAnimation()
         }
 
         if (time != lastTime) {

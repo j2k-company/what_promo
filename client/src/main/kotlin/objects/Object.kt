@@ -67,14 +67,14 @@ value class Mass(val value: Long) {
     }
 
     companion object {
-        val MAX_VAlUE: Long = 3037000499
+        const val MAX_VAlUE: Long = 3037000499
     }
 }
 
 data class RGB(val r: UByte, val g: UByte, val b: UByte) {
-    val hex = "#${if (r < 10U) "0" else "" + r.toString(16)}" +
-            (if (r < 10U) "0" else "" + g.toString(16)) +
-            if (r < 10U) "0" else "" + b.toString(16)
+    val hex = "#${(if (r < 16U) "0" else "") + r.toString(16)}" +
+            (if (g < 16U) "0" else "") + g.toString(16) +
+            (if (b < 16U) "0" else "") + b.toString(16)
 
     companion object {
         fun random() = RGB(

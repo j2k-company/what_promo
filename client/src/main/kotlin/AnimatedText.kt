@@ -4,7 +4,7 @@ import objects.RGB
 import org.w3c.dom.HTMLDivElement
 
 class AnimatedText(
-    val text: String,
+    private val text: String,
     color: RGB,
     private val interval: Int,
     private val animation: AnimatedText.() -> Unit
@@ -22,6 +22,7 @@ class AnimatedText(
         val div = document.createElement("div") as HTMLDivElement
         div.style.apply {
             position = "absolute"
+            console.log(color.hex)
             this.color = color.hex
         }
         document.body!!.appendChild(div)
@@ -31,11 +32,13 @@ class AnimatedText(
 
     fun nextChar(): Char? {
         return if(currentCharIndex != text.lastIndex) {
-            currentCharIndex++
             textField.innerText += currentChar
+            currentCharIndex++
             currentChar
         } else {
+            textField.innerText += currentChar
             currentCharIndex = 0
+            stopAnimation()
             null
         }
     }
@@ -47,7 +50,7 @@ class AnimatedText(
         }, interval)
     }
 
-    fun breakAnimation() {
+    fun stopAnimation() {
         handle?.let { window.clearInterval(it) }
     }
 }
