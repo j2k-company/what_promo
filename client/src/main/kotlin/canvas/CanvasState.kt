@@ -68,6 +68,7 @@ class CanvasState(
             val context = canvas.getContext("2d") as CanvasRenderingContext2D
             context.canvas.width = window.innerWidth
             context.canvas.height = window.innerHeight
+            context.canvas.style.position = "absolute"
             document.body!!.appendChild(canvas)
             return canvas
         }

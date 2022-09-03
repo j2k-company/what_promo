@@ -43,3 +43,7 @@ tasks.register<Copy>("copyIndexHTML") {
     from(file("src/main/resources/index.html"))
     into(outPath)
 }
+
+rootProject.extensions.configure<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension> {
+    versions.webpackCli.version = "4.10.0"
+}
