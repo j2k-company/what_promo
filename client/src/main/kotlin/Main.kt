@@ -1,4 +1,5 @@
 import canvas.CanvasState
+import canvas.fps
 import math.Point
 import math.Vector
 import objects.Mass
@@ -15,7 +16,9 @@ fun main() {
             blackHole.position = Point(width / 2.0, height / 2.0)
             addDrawable(blackHole)
 
-            Text("someInnerTExt", RGB(0u, 170u, 0u))
+            AnimatedText("someInnerTExt", RGB(0u, 170u, 0u), 6.fps) {
+                nextChar()
+            }
         }
 
         if (time != lastTime) {
