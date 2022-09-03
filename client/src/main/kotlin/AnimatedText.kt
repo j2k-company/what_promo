@@ -7,7 +7,7 @@ class AnimatedText(
     val text: String,
     color: RGB,
     private val interval: Int,
-    val animation: AnimatedText.() -> Unit
+    private val animation: AnimatedText.() -> Unit
 ) {
 
     private val textField: HTMLDivElement
@@ -32,6 +32,7 @@ class AnimatedText(
     fun nextChar(): Char? {
         return if(currentCharIndex != text.lastIndex) {
             currentCharIndex++
+            textField.innerText += currentChar
             currentChar
         } else {
             currentCharIndex = 0
