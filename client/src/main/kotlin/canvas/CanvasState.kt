@@ -4,6 +4,7 @@ import objects.RGB
 import kotlinx.browser.document
 import kotlinx.browser.window
 import math.Point
+import objects.Object
 import org.w3c.dom.CanvasRenderingContext2D
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.random.Random
@@ -35,6 +36,14 @@ class CanvasState(
             _drawables.forEach {
                 it.update(this@CanvasState)
                 it.draw(context)
+                if(it is Object) {
+                    val x = it.position.x
+                    val y = it.position.y
+                    if(x < 0 || x > width ||
+                       y < 0 || y > height) {
+                        removeDrawable(it)
+                    }
+                }
             }
 
             iterations++
