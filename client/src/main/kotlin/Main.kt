@@ -17,7 +17,7 @@ val animatedText = AnimatedText(
     text = "someInnerTExt",
     interval = 6.fps,
     color = RGB(0u, 170u, 0u)
-)
+) { nextChar() ?: startAnimation() }
 
 fun main() {
     CanvasState {

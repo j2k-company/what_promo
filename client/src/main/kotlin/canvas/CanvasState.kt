@@ -39,8 +39,8 @@ class CanvasState(
                 if(it is Object) {
                     val x = it.position.x
                     val y = it.position.y
-                    if(x < 0 || x > width ||
-                       y < 0 || y > height) {
+                    if(x < -1 || x > width+1 ||
+                       y < -1 || y > height+1) {
                         removeDrawable(it)
                     }
                 }
